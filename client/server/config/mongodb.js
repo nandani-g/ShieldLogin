@@ -1,12 +1,9 @@
-// write a function which is connect to database
+import mongoose from "mongoose"; // 👈 make sure this is still there
 
-import mongoose from "mongoose";
-
-const connectDB = async ()=> {
-
-  mongoose.connection.on('connected', ()=>console.log("Database connected"));
-  await mongoose.connect(`${process.env.MONGODB_URL}/shieldLogin`);
+const connectDB = async () => {
+ console.log("URL from env:", process.env.MONGODB_URI);
+  mongoose.connection.on('connected', () => console.log("Database connected"));
+ await mongoose.connect(`${process.env.MONGODB_URI}/shieldLogin`);
 };
-
 
 export default connectDB;
