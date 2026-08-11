@@ -13,7 +13,7 @@ const Login = () => {
   // we will get the backend URL from our context so 
   // to get the data from the context we will use content hook
 
-  const {backendUrl, setIsLoggedin} = useContext(AppContent)
+  const {backendUrl, setIsLoggedin, getUserData} = useContext(AppContent)
 
   const [state, setState] = useState('Sign Up')
 
@@ -36,6 +36,7 @@ const Login = () => {
         // mean user is loggedin
       if(data.success){
         setIsLoggedin(true)
+        getUserData()
         navigate('/')
       } else{
         toast.error(data.message)
@@ -46,6 +47,7 @@ const Login = () => {
         // hit the login api
       if(data.success){
         setIsLoggedin(true)
+        getUserData()
         navigate('/')
       } else{
         toast.error(data.message)
@@ -55,7 +57,7 @@ const Login = () => {
       }
     } catch (error) {
 
-        toast.error(data.message)
+        toast.error(error.message)
       
     }
   }
