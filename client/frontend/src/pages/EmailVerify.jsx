@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import {AppContent} from '../context/AppContext'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const EmailVerify = () => {
+// add cookie in request
+  axios.defaults.withCredentials = true;
+
+  const navigate = useNavigate()
+  const {backendUrl, isLoggedin, userData, getUserData} = useContext(AppContent)
   const navigate = useNavigate();
   const inputRefs = React.useRef([])
 
@@ -35,17 +43,41 @@ const EmailVerify = () => {
 // OTP and each digit will be added in each input field now we have to add the functionality on this verify email button so that it will send this OTP to our backend server and it will verify our account so to make this funtionality let's come back and we have to create a function that will handle this form
   const onSubmitHandler = async (e)=>{
     try {
-      
+      // prevent the defalut functionality that will reload the web page when we submit the form so after adding this e do prevent default it will not related the web page when we submit 
+      e.preventDefault();
+      // we have to get the OTP
+      const otpArray = inputRefs.current.map(e => e.value)
+
+      const otp = otpArray.join(' ')
+
+      // we have the OTP now we will send this OTP on our backend API. so add API call
+
+      const {data} = await axios.post(backendUrl + '/api/auth/verify-account', {otp})
+
+      if(data.success){
+        toast.success(data.message)
+        getUserData()
+        
+        // navigate the user on homepage because user is already verified then the user will be redirected to homepage
+        navigate('/')
+      } else {
+        toast.error(data.message)
+      }
+
     } catch (error) {
-      
+      toast.error(error.message)
     }
   }
+
+  useEffect(()=>{
+    isLoggedin && userData && userData.isAccountVerified  && navigate('/')
+  },[isLoggedin, userData])
 
   return (
     <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400'>
       <img onClick={() => navigate('/')} src={assets.logo} alt="" className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer'/>
 
-      <form className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
+      <form  onSubmit = {onSubmitHandler} className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
         <h1 className='text-white text-2xl font-semibold text-center mb-4'>Email Verify OTP</h1>
         <p className='text-center mb-6 text-indigo-300'>Enter the 6-digit code sent to your email id.</p>
         <div className='flex justify-between mb-8' onPaste={handlePaste}>
