@@ -38,31 +38,28 @@ A complete, secure authentication system built with the MERN stack. Includes use
 
 ## 📂 Project Structure
 
-
 ShieldLogin/
-├── client/ # React frontend
-│ └── src/
-│ ├── pages/
-│ │ ├── Login.jsx
-│ │ └── EmailVerify.jsx
-│ ├── components/
-│ │ └── Navbar.jsx
-│ └── assets/
-└── server/ # Express backend
-├── config/
-│ ├── mongodb.js
-│ └── nodemailer.js
-├── controller/
-│ └── authController.js
-├── middleware/
-│ └── userAuth.js
-├── models/
-│ └── userModel.js
-├── routes/
-│ └── authRoutes.js
-└── server.js
-
-
+├── client/          # React frontend
+│   └── src/
+│       ├── pages/
+│       │   ├── Login.jsx
+│       │   └── EmailVerify.jsx
+│       ├── components/
+│       │   └── Navbar.jsx
+│       └── assets/
+└── server/          # Express backend
+    ├── config/
+    │   ├── mongodb.js
+    │   └── nodemailer.js
+    ├── controller/
+    │   └── authController.js
+    ├── middleware/
+    │   └── userAuth.js
+    ├── models/
+    │   └── userModel.js
+    ├── routes/
+    │   └── authRoutes.js
+    └── server.js
 ---
 
 ## 📂 API Endpoints
@@ -128,7 +125,7 @@ npm run dev
 
 The frontend runs on `http://localhost:5173` (default Vite port).
 
-> ⚠️ Never commit your `.env` file — it's already excluded via `.gitignore`.
+
 
 ---
 
