@@ -38,6 +38,7 @@ A complete, secure authentication system built with the MERN stack. Includes use
 
 ## 📂 Project Structure
 
+```text
 ShieldLogin/
 ├── client/          # React frontend
 │   └── src/
@@ -60,6 +61,8 @@ ShieldLogin/
     ├── routes/
     │   └── authRoutes.js
     └── server.js
+```
+
 ---
 
 ## 📂 API Endpoints
@@ -82,7 +85,7 @@ All routes are prefixed with `/api/auth`.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/ShieldLogin.git
+git clone https://github.com/nandani-g/ShieldLogin.git
 cd ShieldLogin
 ```
 
@@ -95,7 +98,7 @@ npm install
 
 Create a `.env` file inside the `server` folder:
 
-```dotenv
+```env
 PORT=4000
 NODE_ENV=development
 
@@ -124,8 +127,6 @@ npm run dev
 ```
 
 The frontend runs on `http://localhost:5173` (default Vite port).
-
-
 
 ---
 
