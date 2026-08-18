@@ -11,7 +11,7 @@ const EmailVerify = () => {
 
   const navigate = useNavigate()
   const {backendUrl, isLoggedin, userData, getUserData} = useContext(AppContent)
-  const navigate = useNavigate();
+ 
   const inputRefs = React.useRef([])
 
   const handleInput = (e, index) => {
@@ -68,7 +68,7 @@ const EmailVerify = () => {
       toast.error(error.message)
     }
   }
-
+//  if account is already verified then the verify-account api redirected to home page
   useEffect(()=>{
     isLoggedin && userData && userData.isAccountVerified  && navigate('/')
   },[isLoggedin, userData])
