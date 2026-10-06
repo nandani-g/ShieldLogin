@@ -37,6 +37,11 @@ A complete, secure authentication system built with the MERN stack. Includes use
 
 ---
 
+## 📋 Prerequisites
+- Node.js v18 or higher
+- MongoDB Atlas account
+- Brevo account (for SMTP emails)
+
 ## 📂 Project Structure
 
 ```text
