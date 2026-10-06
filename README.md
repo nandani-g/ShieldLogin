@@ -1,4 +1,5 @@
 # 🛡️ ShieldLogin — Full-Stack Authentication System
+Project code -- github.com/nandani-g/ShieldLogin
 
 A complete, secure authentication system built with the MERN stack. Includes user registration, login, logout, and email verification via OTP — with a fully connected React frontend and Node/Express backend.
 
